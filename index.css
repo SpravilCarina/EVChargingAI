@@ -1,0 +1,482 @@
+/* ========= index.css ========= */
+
+/* Reset și setări de bază pentru body și html */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f5f7fa;
+  color: #23262f;
+  transition: background 0.4s ease, color 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Stilizare dark mode pentru body */
+body.dark-mode {
+  background: linear-gradient(-45deg, #1b1e23, #23262f 50%, #1a3558 100%);
+  color: #fafafa;
+}
+
+/* Resetare link */
+a {
+  color: #2196f3;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Scrollbar modern */
+::-webkit-scrollbar {
+  width: 8px;
+  background: #e3eafc;
+}
+::-webkit-scrollbar-thumb {
+  background: #2196f366;
+  border-radius: 4px;
+}
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #23262f;
+}
+
+/* Container root */
+#root {
+  min-height: 100vh;
+  width: 100vw;
+}
+
+/* Clasa principala App */
+.App {
+  min-height: 100vh;
+  text-align: center;
+  padding-bottom: 44px;
+  background: transparent; /* inherited body */
+}
+
+/* Headere elementare */
+h1, h2, h3 {
+  margin-top: 0;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  color: inherit;
+}
+h1 {
+  font-size: 2.1rem;
+}
+h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Paragrafe, label și butoane */
+p, label, button {
+  font-size: 1.04rem;
+  color: inherit;
+  line-height: 1.4;
+}
+
+/* Butoane și clasa btn-primary */
+button,
+.btn-primary {
+  transition: background 0.19s ease, color 0.11s ease, transform 0.13s ease;
+  outline-offset: 2px;
+}
+.btn-primary {
+  background: linear-gradient(90deg, #2196f3, #43e97b 80%);
+  border: none;
+  color: #fff;
+  padding: 11px 32px;
+  border-radius: 23px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(33,150,243,0.07);
+  margin-top: 19px;
+  user-select: none;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background: linear-gradient(86deg, #1565c0, #43e97b 78%);
+  transform: scale(1.035);
+  outline: none;
+}
+button[disabled], .btn-primary[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Checkbox și radio cu accent custom */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: #2196f3;
+  cursor: pointer;
+}
+
+/* Card dashboard stil glassmorphism modern */
+.dashboard-card {
+  background: rgba(255,255,255,0.83);
+  border-radius: 15px;
+  box-shadow: 0 2px 16px rgba(33, 150, 243, 0.09);
+  margin: 28px auto;
+  max-width: 450px;
+  padding: 2.3rem 2.7rem 2rem 2.7rem;
+  backdrop-filter: blur(7px);
+  transition: box-shadow 0.33s ease, transform 0.21s ease;
+  position: relative;
+  color: #23262f;
+}
+.dashboard-card:hover {
+  box-shadow: 0 7px 32px rgba(33, 150, 243, 0.23);
+  transform: translateY(-4px) scale(1.018);
+}
+body.dark-mode .dashboard-card {
+  background: rgba(40,44,55,0.89);
+  border: 1px solid rgba(33,150,243,0.19);
+  color: #fafafa;
+}
+
+/* Status LED rotund, animat */
+.status-led {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  margin-right: 7px;
+  box-shadow: 0 0 8px 1px #43e97b44;
+  background: #43e97b;
+  animation: led-pulse 1.6s infinite;
+  vertical-align: middle;
+}
+.status-led.red {
+  background: #f44336;
+  box-shadow: 0 0 8px 1px #f4433644;
+}
+.status-led.yellow {
+  background: #ffb300;
+  box-shadow: 0 0 8px 1px #ffb30044;
+}
+.status-led.green {
+  background: #43e97b;
+  box-shadow: 0 0 8px 1px #43e97b44;
+}
+@keyframes led-pulse {
+  0%, 100% { opacity: 1; }
+  45% { opacity: 0.55; }
+}
+
+/* Badge-uri stil “nou” și eco */
+.badge-new {
+  background: #f44336;
+  color: #fff;
+  font-size: 0.79rem;
+  text-transform: uppercase;
+  border-radius: 9px;
+  padding: 2px 9px;
+  margin-left: 4px;
+  letter-spacing: 0.04em;
+  display: inline-block;
+  vertical-align: middle;
+  animation: badge-pop 0.6s cubic-bezier(.41,2.13,.59,.8) both;
+}
+@keyframes badge-pop {
+  0% { transform: scale(0.32); opacity: 0.5; }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+.eco-badge {
+  background: linear-gradient(93deg, #43e97b 75%, #2196f3 110%);
+  color: #fff;
+  font-size: 0.89rem;
+  border-radius: 10px;
+  padding: 2px 13px;
+  margin-left: 4px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  box-shadow: 0 3px 13px rgba(27,205,69,0.08);
+  vertical-align: middle;
+}
+
+/* Toast feedback */
+.toast-msg {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  z-index: 9999;
+  background: #2196f3;
+  color: #fff;
+  padding: 15px 26px;
+  border-radius: 8px;
+  font-size: 1.04rem;
+  box-shadow: 0 6px 18px rgba(33,150,243,0.23);
+  opacity: 0.93;
+  animation: toast-pop 0.6s cubic-bezier(.27,1.64,.59,.8);
+}
+@keyframes toast-pop {
+  0% { transform: translateY(-38px) scale(0.96); opacity: 0; }
+  90% { transform: translateY(6px) scale(1.04); }
+  100% { transform: translateY(0) scale(1); opacity: 0.93; }
+}
+
+/* Loader și skeleton shimmer */
+.skeleton-loader, .skeleton-block {
+  display: inline-block;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #f5f7fa 25%, #e3eafc 60%, #f5f7fa 85%);
+  background-size: 200% 100%;
+  animation: shimmerMove 1.3s infinite linear;
+  min-height: 19px;
+}
+.skeleton-loader { min-width: 70px; height: 19px; margin: 2px 0; }
+.skeleton-block { width: 80vw; max-width: 450px; height: 43px; }
+@keyframes shimmerMove {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
+
+/* Progress bar baterie */
+.battery-bar {
+  width: 100%;
+  height: 15px;
+  border-radius: 12px;
+  background: #e3eafc;
+  box-shadow: 0 1px 2px rgba(33,150,243,0.09);
+  margin: 13px 0 14px 0;
+  overflow: hidden;
+}
+.battery-level {
+  background: linear-gradient(90deg, #43e97b, #38f9d7 85%);
+  height: 100%;
+  border-radius: 12px;
+  transition: width 0.45s ease;
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+  cursor: help;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background: #23262f;
+  color: #fff;
+  text-align: center;
+  border-radius: 7px;
+  padding: 7px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 132%;
+  opacity: 0;
+  font-size: 0.93rem;
+  transition: opacity 0.31s ease;
+  z-index: 18;
+  pointer-events: none;
+}
+.tooltip:hover .tooltiptext,
+.tooltip:focus .tooltiptext {
+  visibility: visible;
+  opacity: 0.96;
+  pointer-events: auto;
+}
+
+/* Metrics styles */
+.metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-top: 9px;
+}
+.metric-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 0;
+  border-bottom: 1px solid #e3eafc;
+  font-size: 1.08rem;
+  position: relative;
+}
+.metric-item:last-child {
+  border-bottom: none;
+}
+.metric-label {
+  color: #23262f;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.metric-value {
+  color: #2196f3;
+  font-weight: bold;
+}
+
+/* Sparkline chart container */
+.sparkline {
+  width: 97px;
+  height: 25px;
+  display: inline-block;
+  position: relative;
+  top: 5px;
+  margin-left: 7px;
+}
+
+/* Leaderboard */
+.leaderboard {
+  max-width: 410px;
+  margin: 52px auto 42px auto;
+  background: rgba(255,255,255,0.98);
+  border-radius: 13px;
+  box-shadow: 0 2px 13px rgba(33,150,243,0.09);
+  padding: 20px 20px 12px 20px;
+}
+.progress-objective {
+  width: 100px;
+  background: #e3eafc;
+  border-radius: 7px;
+  overflow: hidden;
+  height: 8px;
+  margin-top: 5px;
+  margin-bottom: 2px;
+  position: relative;
+  display: inline-block;
+}
+.progress-bar {
+  background: linear-gradient(90deg,#43e97b,#2196f3 70%);
+  height: 100%;
+  border-radius: 7px;
+  transition: width 0.4s ease;
+}
+
+/* Avatar shimmer */
+.avatar-shimmer {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(95deg, #e3eafc 40%, #43e97b 60%);
+  animation: shimmerMove 1.07s infinite linear;
+  border: 2px solid #38f9d7;
+  box-shadow: 0 2px 8px #4fc3f729;
+}
+
+/* Theme switch */
+.theme-switch {
+  position: absolute;
+  top: 26px;
+  right: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 7;
+}
+.theme-switch input[type="checkbox"] {
+  width: 36px;
+  height: 18px;
+  accent-color: #2196f3;
+  cursor: pointer;
+}
+
+/* Quick settings */
+.quick-settings {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 100;
+  background: #fff;
+  border-radius: 17px;
+  box-shadow: 0 6px 20px rgba(33,150,243,0.13);
+  padding: 19px 26px 13px 22px;
+  font-size: 1.07rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+body.dark-mode .quick-settings {
+  background: #23262f;
+  color: #fafafa;
+}
+
+/* Notifications feed */
+.notifications-feed {
+  position: fixed;
+  bottom: 18px;
+  left: 24px;
+  z-index: 100;
+  background: #fff;
+  border-radius: 13px;
+  box-shadow: 0 4px 17px rgba(33,150,243,0.13);
+  padding: 14px 17px 9px 12px;
+  font-size: 1.01rem;
+  min-width: 200px;
+  max-width: 300px;
+  color: #23262f;
+}
+body.dark-mode .notifications-feed {
+  background: #23262f;
+  color: #fafafa;
+}
+.notif-entry {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.notif-entry:last-child {
+  margin-bottom: 0;
+}
+
+/* Onboarding overlay */
+.onboarding-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(33,150,243,0.09);
+  z-index: 1500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.onboarding-card {
+  background: #fff;
+  padding: 35px 43px;
+  border-radius: 23px;
+  box-shadow: 0 8px 32px #2196f323;
+  max-width: 97vw;
+  text-align: center;
+  color: #23262f;
+}
+body.dark-mode .onboarding-card {
+  background: #23262f;
+  color: #fafafa;
+}
+
+/* Responsive */
+@media screen and (max-width: 760px) {
+  .dashboard-card {
+    max-width: 98vw;
+    padding: 1.1rem 0.3rem 1.1rem 0.3rem;
+  }
+  .notifications-feed,
+  .quick-settings,
+  .leaderboard {
+    max-width: 98vw;
+  }
+}
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.22rem;
+  }
+  .dashboard-card {
+    font-size: 0.97em;
+  }
+  .metric-label {
+    font-size: 0.97em;
+  }
+  .btn-primary {
+    padding: 8px 18px;
+  }
+}
